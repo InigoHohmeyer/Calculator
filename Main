@@ -1,0 +1,73 @@
+package com.company;
+
+
+import java.io.PrintStream;
+import java.util.Scanner;
+import java.lang.String;
+
+public class Main {
+    public static void main(String[] args) {
+        System.out.println("What is your name");
+
+        // Scanner scanner = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
+
+
+        String name = scanner.nextLine();
+        System.out.println("Oh hello" + " " + name);
+
+        System.out.println("Put in a calculation");
+        //System.out.println("it should look like this: \nx operator y ");
+
+
+       String[] operators = { "+", "-" , "*", "/"};
+       while(true) {
+
+
+            String Calculation = scanner.nextLine();
+           Calculation = Calculation.replace(" ","");
+
+
+
+
+            for(String operator : operators ) {
+                String regex = "[" + operator + "]";
+                String[] splitStrings = Calculation.split(regex, 2);
+                PrintStream sout = System.out;
+               // sout.println("splitString.length = " + splitStrings.length);
+
+                int len = splitStrings.length;
+                if (len != 2) continue;
+
+
+                String variable1 = splitStrings[0];
+                // String operator = splitStrings[1];
+                String variable2 = splitStrings[1];
+                Integer x = Integer.valueOf(variable1);
+                Integer y = Integer.valueOf(variable2);
+
+                float ans;
+                if (operator.equals("+")) {
+                    ans = x + y;
+                } else if (operator.equals("-")) {
+                    ans = x - y;
+                } else {
+                    sout.println("You broke it operator = \"" + operator + "\"");
+                    break;
+
+                }
+                sout.println("answer is " + ans);
+                break;
+            }
+       }
+    }
+
+
+
+
+
+
+
+
+
+}
